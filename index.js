@@ -1,3 +1,4 @@
-import AwesomeAlert from './lib';
+import AwesomeAlert from './src/AwesomeAlert';
 
-export default AwesomeAlert;
+//export default AwesomeAlert;
+module.exports = AwesomeAlert;

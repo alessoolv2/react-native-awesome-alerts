@@ -1,15 +1,13 @@
-.DS_Store
-logs
+# Logs
 *.log
-pids
-*.pid
-*.seed
-lib-cov
-coverage
-.lock-wscript
-build/Release
+npm-debug.log
+
+# Dependency directory
 node_modules
-res
+
+# Runtime data
+tmp
+
+# Examples (If applicable to your project)
 examples
-src/
-test/
+*.tgz

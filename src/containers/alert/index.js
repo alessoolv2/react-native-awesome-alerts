@@ -25,7 +25,8 @@ export default class Alert extends Component {
     this.springValue = new Animated.Value(0.3);
 
     this.state = {
-      showSelf: false
+      showSelf: false,
+      state: this.props
     };
 
     if (show) this._springShow(true);
@@ -188,12 +189,20 @@ export default class Alert extends Component {
     return null;
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { show } = nextProps;
-    const { showSelf } = this.state;
+  static getDerivedStateFromProps(nextProps, prevState){
+    if(nextProps!==prevState){
+        return {state : nextProps};
+    }
+    return null;
+  }
 
-    if (show && !showSelf) this._springShow();
-    else if (show === false && showSelf) this._springHide();
+  componentDidUpdate(prevProps, prevState) {
+      if(prevState !== this.state.state){
+        const { show } = this.state.state;
+        const { showSelf } = this.state;
+        if (show && !showSelf) this._springShow();
+        else if (show === false && showSelf) this._springHide();
+      }
   }
 
   componentWillUnmount() {
